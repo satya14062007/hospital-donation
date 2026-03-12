@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Patient Cases</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#f4f7fb;
+}
+
+.case-card{
+border-radius:15px;
+transition:0.3s;
+}
+
+.case-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+<h2 class="text-center mb-5">💖 Patients Needing Help</h2>
+
+<div class="row">
+
+{% for case in cases %}
+
+<div class="col-md-4">
+
+<div class="card case-card p-3 mb-4">
+
+<h4>{{ case.patient }}</h4>
+
+<p><b>Hospital:</b> {{ case.hospital }}</p>
+
+<p><b>Amount Needed:</b> ₹{{ case.amount }}</p>
+
+<a href="/donate/{{ loop.index0 }}" class="btn btn-primary">
+Donate Now ❤️
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="text-center">
+
+<a href="/" class="btn btn-secondary">
+⬅ Back Home
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

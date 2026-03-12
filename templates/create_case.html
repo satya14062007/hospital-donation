@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Patient Case</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+<div class="card p-4 shadow">
+
+<h3>➕ Create Patient Case</h3>
+
+{% if hospitals|length == 0 %}
+
+<p class="text-danger">
+No hospitals registered.
+<a href="/hospital/register">Register Hospital</a> first.
+</p>
+
+{% else %}
+
+<form method="POST">
+
+<input type="text" name="patient_name" class="form-control mb-3" placeholder="Patient Name" required>
+
+<input type="number" name="amount" class="form-control mb-3" placeholder="Required Amount" required>
+
+<select name="hospital" class="form-control mb-3">
+
+{% for hospital in hospitals %}
+
+<option value="{{ hospital.name }}">{{ hospital.name }}</option>
+
+{% endfor %}
+
+</select>
+
+<button class="btn btn-success">Create Case</button>
+
+</form>
+
+{% endif %}
+
+<br>
+
+<a href="/">Back Home</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
